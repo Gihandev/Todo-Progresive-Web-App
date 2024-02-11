@@ -10,8 +10,8 @@ export default defineConfig({
       registerType:'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
-        name: ' Todo App',
-        short_name: 'ToDo',
+        name: 'My Awesome Todo App',
+        short_name: 'TodoApp',
         description: 'My Awesome Todo App description',
         theme_color: '#ffffff',
         icons: [
