@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Avatar, Dropdown, Navbar, TextInput } from 'flowbite-react';
 import axios from 'axios';
 import { useNavigate ,Link } from 'react-router-dom';
+import Icon from '../../public/favicon.ico';
 
 
 function NavBar() {
@@ -42,7 +43,7 @@ function NavBar() {
     <>
       <Navbar className=' w-full z-10 p-2 border bg-[#004B35] shadow-lg' fluid rounded>
         <Navbar.Brand href="/">
-          <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt=" Logo" />
+          <img src ={Icon} className="mr-3 h-6 sm:h-9" alt=" Logo" />
           <span className="self-center whitespace-nowrap text-2xl font-semibold text-white">TRY TODO</span>
         </Navbar.Brand>
         <form className='hidden md:block'>
