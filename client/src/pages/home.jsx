@@ -1,0 +1,86 @@
+import React,{useState} from 'react';
+import { Tabs } from 'flowbite-react';
+import { MdOutlineTaskAlt } from "react-icons/md";
+import { IoMdAddCircle } from "react-icons/io";
+import { FaTasks } from "react-icons/fa";
+import { FiRefreshCcw } from "react-icons/fi";
+import AllTask from '../components/allTask';
+import Completed from '../components/completed';
+import AddModel from '../components/addModel';
+import Navbar from '../components/navBar';
+
+
+
+
+function home() {
+    const [showModal, setShowModal] = useState(false);
+    const [refreshKey, setRefreshKey] = useState(0);
+
+    const handleOpenModal = () => {
+        setShowModal(true);
+      };
+
+      const handleCloseModal = () => {
+        setShowModal(false);
+      };
+
+
+    const handleRefresh = () => {
+        setRefreshKey(prevKey => prevKey + 1);
+    };
+
+  return (
+<>
+    <Navbar/>
+    <div className=' bg-[#F9F9F9]'>
+
+        <div className=' p-2 w-full bg-white/60  md:p-10 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
+       
+
+       {/** button */}
+        <div className=' flex float-right p-2 '>
+        <button onClick={handleOpenModal} type="button" class="  focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-md px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >
+            <IoMdAddCircle className='inline-block mr-2 ' size={20}/>
+             Add Todo </button>
+
+             <button onClick={handleRefresh} type="button" class="  focus:outline-none text-black bg-white border-2 border-green-700  font-medium rounded-lg text-md px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 dark:text-white" >
+            <FiRefreshCcw  className='inline-block mr-2 ' size={20}/>
+             Refresh </button>
+        </div>
+       
+        {/** tabs*/}
+
+        <Tabs aria-label="Tabs with underline" style="underline" className='flex-auto w-full'>
+          <Tabs.Item active title="All Tasks" icon={FaTasks} className='w-full'>
+
+            <AllTask key={refreshKey}/>
+            
+
+          </Tabs.Item>
+          <Tabs.Item title="Completed Tasks" icon={MdOutlineTaskAlt} className=' w-full'>
+           
+            <Completed key={refreshKey}/>
+          </Tabs.Item>
+        </Tabs>
+
+    
+
+    
+
+
+
+      
+
+       
+
+
+
+
+        </div>
+        <AddModel visible={showModal} onClose={handleCloseModal}  onAddTodo={handleCloseModal} />
+    </div>
+    </>
+  )
+}
+
+export default home
