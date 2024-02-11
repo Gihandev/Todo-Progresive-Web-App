@@ -8,7 +8,7 @@ function DeleteModel({ visible, onClose, taskId }) {
 
     const handleDeleteTask = async () => {
         try {
-            await axios.delete(`http://localhost:3000/todo/delete/${taskId}`);
+            await axios.delete(`https://pwa-todo.onrender.com/todo/delete/${taskId}`);
             onClose(); // Call the onClose function passed from the parent component
         } catch (error) {
             console.error('Error deleting task:', error);

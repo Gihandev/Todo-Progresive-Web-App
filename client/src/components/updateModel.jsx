@@ -21,7 +21,7 @@ function updateModel({ visible, onClose, onUpdateTodo, taskId }) {
 
     const fetchTaskDetails = async (taskId) => {
         try {
-            const res = await axios.get(`http://localhost:3000/todo/single/${taskId}`);
+            const res = await axios.get(`https://pwa-todo.onrender.com/todo/single/${taskId}`);
             const task = res.data;
             setTitle(task.Title);
             setStatus(task.Status);
@@ -44,7 +44,7 @@ function updateModel({ visible, onClose, onUpdateTodo, taskId }) {
             Comment,
         };
         try{
-            await axios.put(`http://localhost:3000/todo/update/${taskId}`, updatedTodo);
+            await axios.put(`https://pwa-todo.onrender.com/todo/update/${taskId}`, updatedTodo);
             onUpdateTodo(taskId, updatedTodo);
             setSuccess('Task updated successfully');
             setError("")

@@ -30,7 +30,7 @@ function signUp() {
 
 
 
-            await axios.post('http://localhost:3000/auth/register', { Email, Password, Name });
+            await axios.post('https://pwa-todo.onrender.com/auth/register', { Email, Password, Name });
             console.log("Sign up successful");
             setSuccess("Sign Up Successfully");
             setError("")

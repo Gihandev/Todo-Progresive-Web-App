@@ -19,7 +19,7 @@ function login() {
             setError("Please fill all the fields");
             return;
         }
-        const response = await axios.post('http://localhost:3000/auth/login', { Email, Password });
+        const response = await axios.post('https://pwa-todo.onrender.com/auth/login', { Email, Password });
         const userData = response.data;
         sessionStorage.setItem('user', JSON.stringify(userData));
         console.log("Login successful");

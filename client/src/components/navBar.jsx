@@ -25,7 +25,7 @@ function NavBar() {
   const handleServerLogout = async () => {
     try {
       // Make an Axios request to your server logout endpoint
-      const response = await axios.post('http://localhost:3000/auth/logout');
+      const response = await axios.post('https://pwa-todo.onrender.com/auth/logout');
       console.log('Server logout response:', response.data);
       sessionStorage.removeItem('user');
     setUserData(null);

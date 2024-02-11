@@ -38,7 +38,7 @@ function addModel({ visible, onClose, onAddTodo }) {
             User:userId
         };
         try {
-            await axios.post('http://localhost:3000/todo/add',newTodo);
+            await axios.post('https://pwa-todo.onrender.com/todo/add',newTodo);
             onAddTodo(newTodo);
             setSuccess("Task Added Successfully")
             setError("")

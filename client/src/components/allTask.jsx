@@ -36,7 +36,7 @@ function allTask() {
         try {
             setLoading(true);
             console.log('Fetching tasks for user:', userId);
-            const res = await axios.get('http://localhost:3000/todo/all');
+            const res = await axios.get('https://pwa-todo.onrender.com/todo/all');
             console.log('Response from server:', res.data);
             const userTasks = res.data.filter(task => task.User === userId);
             console.log('Filtered user tasks:', userTasks);
