@@ -12,6 +12,7 @@ function updateModel({ visible, onClose, onUpdateTodo, taskId }) {
     const [Comment, setComment] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+    const [loading , setLoading] = useState(false);
 
     useEffect(() => {
         if (taskId) {
@@ -35,7 +36,9 @@ function updateModel({ visible, onClose, onUpdateTodo, taskId }) {
     };
     
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
         const updatedTodo = {
             Title,
             Status,
@@ -48,10 +51,16 @@ function updateModel({ visible, onClose, onUpdateTodo, taskId }) {
             onUpdateTodo(taskId, updatedTodo);
             setSuccess('Task updated successfully');
             setError("")
+            setTimeout(() => {
+                
+                setLoading(false);
+                setSuccess("");
+            }, 4000);
             onClose();
         }catch(err){
             console.error('Error updating todo:', err);
             setError(err.message || 'Something went wrong!');
+            setLoading(false);
         }
     };
 
@@ -99,7 +108,7 @@ function updateModel({ visible, onClose, onUpdateTodo, taskId }) {
                 </Modal.Body>
                 <Modal.Footer className=' justify-between'>
                     <Button color="gray" onClick={onClose} >Cancel</Button>
-                    <Button className=' bg-[#05674A]' onClick={handleSubmit}>Update Todo</Button>
+                    <Button type='submit' className=' bg-[#05674A]' onClick={handleSubmit}>{loading? "Loading...":"Update Todo"}</Button>
                 </Modal.Footer>
             </Modal>
         </div>

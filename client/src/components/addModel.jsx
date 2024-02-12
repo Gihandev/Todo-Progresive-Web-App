@@ -14,6 +14,7 @@ function addModel({ visible, onClose, onAddTodo }) {
     const [userId, setUserId] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+    const [loading , setLoading] = useState(false);
    
     
     useEffect(() => {
@@ -28,7 +29,9 @@ function addModel({ visible, onClose, onAddTodo }) {
       
   }, []);
 
-    const handleSubmit = async ()=>{
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        setLoading(true);
         const newTodo ={
             Title,
             Status,
@@ -50,14 +53,20 @@ function addModel({ visible, onClose, onAddTodo }) {
             setDueDate("");
             setComment("");
             
-
-            //model close
+            setTimeout(() => {
+                setLoading(false);
+                setSuccess("");
+            },6000);
             onClose();
+
+            
 
         } catch (error) {
             console.log(error);
-            setError(error.message || 'Something went wrong!');   
+            setError(error.message || 'Something went wrong!');  
+            setLoading(false); 
         }
+       
       
 
     }
@@ -112,7 +121,7 @@ function addModel({ visible, onClose, onAddTodo }) {
       <Modal.Footer className=' justify-between'>
         
         <Button color="gray" onClick={onClose}>Cancel</Button>
-        <Button className=' bg-[#05674A]' onClick={handleSubmit}>Add Todo</Button>
+        <Button type='submit' className=' bg-[#05674A]' onClick={handleSubmit}> {loading ? 'Loading...' : 'Add Todo'}</Button>
       </Modal.Footer>
     </Modal>
     </div>
