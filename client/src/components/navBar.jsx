@@ -11,9 +11,9 @@ function NavBar() {
 
   //get user deta from session storage
   useEffect(() => {
-    const userDataFromSession = sessionStorage.getItem("user");
-    if (userDataFromSession) {
-      setUserData(JSON.parse(userDataFromSession));
+    const getUser = sessionStorage.getItem("user");
+    if (getUser) {
+      setUserData(JSON.parse(getUser));
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);

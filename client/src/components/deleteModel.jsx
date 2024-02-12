@@ -5,12 +5,13 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 
 function DeleteModel({ visible, onClose, taskId }) {
   const [openModal, setOpenModal] = useState(visible);
+  
 
     // Function to handle the delete task
   const handleDeleteTask = async () => {
     try {
       await axios.delete(`https://pwa-todo.onrender.com/todo/delete/${taskId}`);
-      onClose(); // Call the onClose function passed from the parent component
+      onClose(); //close model
     } catch (error) {
       console.error("Error deleting task:", error);
       // Handle error
